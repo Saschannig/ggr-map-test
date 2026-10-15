@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive research map preview for GGR.">
+  <title>Interactive Research Map | GGR Preview</title>
+  <style>
+    :root{--ink:#14253c;--muted:#57677b;--accent:#8c2838;--line:#dce2e9;--bg:#f5f7fa;--white:#fff}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    .top{background:var(--ink);color:white}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0}.brand{font-weight:750;letter-spacing:.07em;font-size:1.05rem}.top small{color:#cbd5e1}.hero{padding:64px 0 28px}.eyebrow{font-size:.78rem;font-weight:750;letter-spacing:.13em;text-transform:uppercase;color:var(--accent)}h1{font-size:clamp(2rem,4.5vw,3.3rem);line-height:1.15;letter-spacing:-.035em;margin:12px 0 16px}p{max-width:760px;color:var(--muted)}.map-card{background:var(--white);border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 28px #14253c0b;overflow:hidden}.map-heading{padding:22px 26px;border-bottom:1px solid var(--line)}.map-heading h2{font-size:1.12rem;margin:0}.map-heading p{font-size:.91rem;margin:5px 0 0}.map-area{min-height:560px}.map-area iframe{width:100%;height:640px;border:0;display:block}.placeholder{min-height:560px;display:grid;place-content:center;text-align:center;padding:32px;background:linear-gradient(140deg,#f9fbfd,#eef2f6)}.placeholder strong{font-size:1.15rem}.placeholder p{margin:8px auto;max-width:550px}.placeholder code{background:#e1e8f0;padding:3px 7px;border-radius:4px;color:#26384c}.info{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin:36px 0 70px}.info h2{font-size:1.05rem;margin-bottom:8px}.info p{font-size:.94rem}footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:.85rem}a{color:var(--accent)}@media(max-width:650px){.top .wrap{align-items:flex-start;flex-direction:column;gap:2px}.hero{padding-top:40px}.map-area iframe{height:500px}.placeholder{min-height:450px}.info{grid-template-columns:1fr;gap:8px}}
+  </style>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand">GGR <span style="font-weight:400;opacity:.7">/ RESEARCH DATA</span></div><small>Interactive visualization preview · Unofficial test page</small></div></header>
+<main class="wrap">
+<section class="hero"><div class="eyebrow">Research visualization</div><h1>GGR Interactive Map Preview</h1><p>An interactive map prototype for exploring cross-national patterns. Hover over or select countries to explore the underlying data, depending on the map's available controls.</p></section>
+<section class="map-card" aria-label="Interactive map"><div class="map-heading"><h2>Interactive World Map</h2><p>Explore the map below. This is a preview environment for testing presentation and responsiveness.</p></div><div class="map-area" id="map-container"><div class="placeholder"><strong>Loading Flourish map</strong><p>Open <code>index.html</code> and replace <code>YOUR_FLOURISH_VISUALISATION_ID</code> in the configuration script with the ID from your Flourish embed URL.</p></div></div></section>
+<section class="info"><div><h2>About this visualization</h2><p>Describe the research question, geographic coverage, variables, and how visitors should interpret the colors and interactions.</p></div><div><h2>Data and methodology</h2><p>Source: [Add dataset or institution]. Period: [Add years]. Methodology: [Add link]. Update this text before public release.</p></div></section>
+</main><footer><div class="wrap">Prototype for testing interactive research visualizations. Not an official university publication.</div></footer>
+<script>
+  // Example Flourish embed URL: https://flo.uri.sh/visualisation/12345678/embed
+  // Replace this placeholder with the numeric ID from YOUR embed URL.
+  const FLOURISH_VISUALISATION_ID = '30575904';
+  if (/^\d+$/.test(FLOURISH_VISUALISATION_ID)) {
+    const frame = document.createElement('iframe');
+    frame.src = `https://flo.uri.sh/visualisation/${FLOURISH_VISUALISATION_ID}/embed`;
+    frame.title = 'Interactive Flourish research map';
+    frame.loading = 'lazy';
+    frame.allowFullscreen = true;
+    document.getElementById('map-container').replaceChildren(frame);
+  }
+</script>
+</body>
+</html>
